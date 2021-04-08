@@ -1,0 +1,1029 @@
+
+
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>节点设置</title>
+    <meta name="description" content="Sufee Admin - HTML5 Admin Template">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="apple-icon.png">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" href="../static/css/area.css">
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="../static/vendors/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../static/vendors/themify-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="../static/vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="../static/vendors/selectFX/css/cs-skin-elastic.css">
+    <link rel="stylesheet" href="../static/vendors/jqvmap/dist/jqvmap.min.css">
+    <link rel="stylesheet" href="../static/assets/css/style.css">
+
+
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+    <script src="../static/js/jquery-3.5.1.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script src="../static/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        body {
+            line-height: 1.5em;
+        }
+
+        #panel {
+
+            /*overflow: auto;*/
+            width: 30%;
+            height: 19vh;
+            /* z-index: 50; */
+            color: black;
+            border: 1px solid rgb(217, 218, 211);
+            background-color: rgb(255, 255, 255);
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 0px #f0eded;
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+<!-- Left Panel -->
+
+<aside id="left-panel" class="left-panel">
+    <nav class="navbar navbar-expand-sm navbar-default">
+
+        <div class="navbar-header">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fa fa-bars"></i>
+            </button>
+            <a class="navbar-brand" href="#" style="font-size: 15px">
+                <img src="../static/images/北京林业大学.jpeg" alt="Logo" style="width: 50px;height: 50px;margin-right: 20px;border-radius: 28px">
+            </a>
+            <a><h5 style="color: whitesmoke;font-size: 17px;">基于LoRa果园无线监控系统</h5></a>
+            <i class="fa fa-bars"></i>
+        </div>
+
+        <div id="main-menu" class="main-menu collapse navbar-collapse">
+            <ul class="nav navbar-nav" style="margin-top: 20px">
+                <li class="active">
+                    <a href="{{ url_for('web.home') }}"> <i class="menu-icon fa fa-dashboard"></i>首页 </a>
+                </li>
+
+                <h3 class="menu-title">用户管理</h3><!-- /.menu-title -->
+                <li>
+                    <a href="{{ url_for('web.user_m', start=0) }}"> <i class="menu-icon ti-email"></i>用户</a>
+                </li>
+
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </nav>
+</aside><!-- /#left-panel -->
+
+<!-- Left Panel -->
+
+<!-- Right Panel -->
+
+<div id="right-panel" class="right-panel">
+
+    <!-- Header-->
+    <header id="header" class="header">
+
+        <div class="header-menu" >
+
+            <div class="col-sm-4">
+                <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
+                <div class="user-area dropdown float-right">
+                    <a  href="#" style="float: right;margin: 5px;"></a>
+                </div>
+            </div>
+
+            <div class="col-sm-8">
+                <div class="user-area dropdown float-right">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img class="user-avatar rounded-circle" src="../static/images/avatar-1.png" alt="User Avatar">
+                    </a>
+                </div>
+
+                <div id="admin">
+                    <a href="{{ url_for('web.loginout') }}" style="float:right;margin: 6px;">注销</a>
+                    <a  href="#" style="float: right;margin: 5px;">欢迎登录：{{ content }}</a>
+                </div>
+                <div class="header-left" style="float: right;margin-right: 10px">
+                    <button class="search-trigger"><i class="fa fa-search"></i></button>
+                    <div class="form-inline">
+                        <form class="search-form">
+                            <input class="form-control mr-sm-2" type="text" placeholder="Search ..." aria-label="Search">
+                            <button class="search-close" type="submit"><i class="fa fa-close"></i></button>
+                        </form>
+                    </div>
+
+                    <div class="dropdown for-notification">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-bell"></i>
+                            <span class="count bg-danger">6</span>
+                        </button>
+
+                    </div>
+
+                    <div class="dropdown for-message">
+                        <button class="btn btn-secondary dropdown-toggle" type="button"
+                                id="message"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="ti-email"></i>
+                            <span class="count bg-primary">9</span>
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </header><!-- /header -->
+    <!-- Header-->
+
+    <div class="content mt-3">
+        <!--/.col-->
+        <div class="page-wrapper">
+            <div class="main-container d-flex flex-row">
+                <div class="container-fluid p-2" style="width: 60%;height: 89vh;">
+                    <div id="container" tabindex="0"></div>
+                </div>
+
+                <div class="container-fluid p-2" id="bio-info" style="width: 40%;">
+                    <div class="tab-content" id="nav-tabContent" style="overflow-y: auto;">
+                        <div class="tab-pane fade show active" id="nav-profile" role="tabpanel"
+                             aria-labelledby="nav-profile-tab" style="overflow-y: auto;">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title" id="intro">密云区概览</h4>
+                                    <table class="table table-borderless table-hover">
+                                        <tbody>
+                                        <tr>
+                                            <td>哺乳类动物</td>
+                                            <td>39种</td>
+                                        </tr>
+                                        <tr>
+                                            <td>国家一级保护动物</td>
+                                            <td>1种</td>
+                                        </tr>
+                                        <tr>
+                                            <td>鸟类</td>
+                                            <td>385种</td>
+                                        </tr>
+                                        <tr>
+                                            <td>一级保护鸟类</td>
+                                            <td>8种</td>
+                                        </tr>
+                                        <tr>
+                                            <td>二级保护鸟类</td>
+                                            <td>51种</td>
+                                        </tr>
+                                        <tr>
+                                            <td>野生维管束植物</td>
+                                            <td>1200种</td>
+                                        </tr>
+                                        <tr>
+                                            <td>名木古树</td>
+                                            <td>1202株</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    <p class="card-text"><small class="text-muted">2021-01-10</small></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade " id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                        </div>
+                        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                            生物多样性指数
+                        </div>
+
+                    </div>
+                    <div id="panel" class="scrollbar1">
+                        <ul id="area-tree">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript" src='http://webapi.amap.com/maps?v=2.0&key=c48c551edf1307c0303402ce39edc194'></script>
+        <script src="http://webapi.amap.com/ui/1.1/main.js?v=1.1.1"></script>
+        <script
+                src="https://webapi.amap.com/maps?v=1.4.15&key=c48c551edf1307c0303402ce39edc194&plugin=AMap.DistrictSearch"></script>
+        <script id="my-infowin-tpl" type="text/template">
+            <div class="amap-ui-smp-ifwn-container" style="z-index:999">
+                <div class="amap-ui-smp-ifwn-content-body" style="width:500px;border-radius: 10px;
+            box-shadow: 0px 0px 10px 0px #000000;
+            opacity: 0.9;text-align:center;">
+                    <h2>
+                        <%= title %>
+                    </h2>
+                    <table class="table table-hover">
+                        <tbody>
+                        <tr>
+                            <td><%= sn_name %></td>
+                            <td> <%= sn %> </td>
+                        </tr>
+                        <tr>
+                            <td><%= status_name %></td>
+                            <td> <%= status %> </td>
+                        </tr>
+                        <tr>
+                            <td><%= location_name %></td>
+                            <td> <%= location %> </td>
+                        </tr>
+                        <tr>
+                            <td><%= img_number %></td>
+                            <td> <%= count %> </td>
+                        </tr>
+                        <tr>
+                            <td><%= date_name %></td>
+                            <td> <%= date %> </td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                    <button class="btn btn-primary amap-ui-infowindow-close" style="margin:0 auto; display:block; width:10%;">关闭</button>
+                </div>
+            </div>
+        </script>
+
+        <script type="text/javascript">
+            //创建地图
+            var map = new AMap.Map('container', {
+                zoom: 18,
+                center: [116.44923, 40.207714],
+                resizeEnable: true
+
+            });
+
+
+
+            //默认 0: 2D地图
+            //    1:卫星地图
+            // map.addControl(new AMap.MapType({
+            //     defaultType: 0
+            // }));
+
+            //just some colors
+            //东城区，西城区，朝阳区，丰台区，石景山区，海淀区，门头沟区，房山区
+            //通州区，顺义区，昌平区，大兴区，怀柔区，平谷区，密云区，延庆区
+            var colors = [
+                "#d80e18", "#d80e18", "#FF4500", "#FF4500", "#FF4500", "#FF4500", "#008B00", "#FFFF00",
+                "#FFFF00", "#FFFF00", "#FFFF00", "#FFFF00", "#008B00", "#008B00", "#008B00", "#008B00"
+            ];
+
+            new AMap.DistrictSearch({
+                extensions: 'all',
+                subdistrict: 0
+            }).search('北京市', function (status, result) {
+                // 外多边形坐标数组和内多边形坐标数组
+                var outer = [
+                    new AMap.LngLat(-360, 90, true),
+                    new AMap.LngLat(-360, -90, true),
+                    new AMap.LngLat(360, -90, true),
+                    new AMap.LngLat(360, 90, true),
+                ];
+                var holes = result.districtList[0].boundaries
+
+                var pathArray = [
+                    outer
+                ];
+                pathArray.push.apply(pathArray, holes)
+                var polygon = new AMap.Polygon({
+                    pathL: pathArray,
+                    //线条颜色，使用16进制颜色代码赋值。默认值为#006600
+                    strokeColor: 'rgb(20,164,173)',
+                    strokeWeight: 4,
+                    //轮廓线透明度，取值范围[0,1]，0表示完全透明，1表示不透明。默认为0.9
+                    strokeOpacity: 0,
+                    //多边形填充颜色，使用16进制颜色代码赋值，如：#FFAA00
+                    fillColor: '#FFFFFF',
+                    //多边形填充透明度，取值范围[0,1]，0表示完全透明，1表示不透明。默认为0.9
+                    fillOpacity: 0.3,
+                    //轮廓线样式，实线:solid，虚线:dashed
+                    strokeStyle: 'dashed',
+                    /*勾勒形状轮廓的虚线和间隙的样式，此属性在strokeStyle 为dashed 时有效， 此属性在
+                      ie9+浏览器有效 取值：
+                      实线：[0,0,0]
+                      虚线：[10,10] ，[10,10] 表示10个像素的实线和10个像素的空白（如此反复）组成的虚线
+                      点画线：[10,2,10]， [10,2,10] 表示10个像素的实线和2个像素的空白 + 10个像素的实
+                      线和10个像素的空白 （如此反复）组成的虚线*/
+                    strokeDasharray: [10, 2, 10]
+                });
+                polygon.setPath(pathArray);
+                map.add(polygon);
+            })
+
+            AMapUI.load(['ui/geo/DistrictExplorer', 'lib/$'], function (DistrictExplorer, $) {
+
+                //创建一个实例
+                var districtExplorer = window.districtExplorer = new DistrictExplorer({
+                    eventSupport: true, //打开事件支持
+                    map: map,
+                    bubble: true
+                });
+
+                //当前聚焦的区域
+                var currentAreaNode = null;
+
+                //鼠标hover提示内容
+                var $tipMarkerContent = $('<div class="tipMarker top"></div>');
+
+                var tipMarker = new AMap.Marker({
+                    content: $tipMarkerContent.get(0),
+                    offset: new AMap.Pixel(0, 0),
+                    bubble: true
+                });
+
+                //根据Hover状态设置相关样式
+                function toggleHoverFeature(feature, isHover, position) {
+
+                    tipMarker.setMap(isHover ? map : null);
+
+                    if (!feature) {
+                        return;
+                    }
+
+                    var props = feature.properties;
+
+                    if (isHover) {
+
+                        //更新提示内容
+                        $tipMarkerContent.html(props.name);
+                        // $tipMarkerContent.html(props.adcode + ': ' + props.name);
+                        //更新位置
+                        tipMarker.setPosition(position || props.center);
+                    }
+
+                    $('#area-tree').find('h2[data-adcode="' + props.adcode + '"]').toggleClass('hover', isHover);
+
+                    //更新相关多边形的样式
+                    var polys = districtExplorer.findFeaturePolygonsByAdcode(props.adcode);
+                    for (var i = 0, len = polys.length; i < len; i++) {
+
+                        polys[i].setOptions({
+                            fillOpacity: isHover ? 0.2 : 0.7
+                        });
+                    }
+                }
+
+                //监听feature的hover事件
+                districtExplorer.on('featureMouseout featureMouseover', function (e, feature) {
+                    toggleHoverFeature(feature, e.type === 'featureMouseover',
+                        e.originalEvent ? e.originalEvent.lnglat : null);
+                });
+
+                //监听鼠标在feature上滑动
+                districtExplorer.on('featureMousemove', function (e, feature) {
+                    //更新提示位置
+                    tipMarker.setPosition(e.originalEvent.lnglat);
+                });
+
+
+                //feature被点击
+                districtExplorer.on('featureClick', function (e, feature) {
+                    // $('#nav-tabContent').css('height', $(window).height() - $('.page-header').height() - $('.nav-tabs').height())
+                    var props = feature.properties;
+
+                    let info = document.getElementById('intro');
+                    let img = document.getElementById("header-img");
+                    let mynavtab = document.getElementById("nav-profile-tab");
+                    if (props.adcode == 110118) {
+                        $("#nav-profile-tab").trigger("click");
+                        info.innerHTML = "密云区概览";
+                        img.innerHTML = "";
+                        img.src = "./imgs/miyun.jpeg";
+
+                    }
+                    else if (props.adcode == 110101) {
+
+                        $("#nav-profile-tab").trigger("click");
+                        info.innerHTML = "东城区概览";
+                        img.innerHTML = "";
+                        img.src = "imgs/dongcheng.jpg";
+
+                    }
+                    else if (props.adcode == 110102) {
+                        $("#nav-profile-tab").trigger("click");
+                        info.innerHTML = "西城区概览";
+                        img.innerHTML = "";
+                        img.src = "imgs/xicheng.jpg";
+
+                    }
+                    else if (props.adcode == 110105) {
+                        $("#nav-profile-tab").trigger("click");
+                        info.innerHTML = "朝阳区概览";
+                        img.innerHTML = "";
+                        img.src = "imgs/chaoyang.png";
+
+                    }
+                    else if (props.adcode == 110106) {
+                        $("#nav-profile-tab").trigger("click");
+                        info.innerHTML = "丰台区概览";
+                        img.innerHTML = "";
+                        img.src = "imgs/fengtai.jpg";
+
+                    }
+                    else if (props.adcode == 110107) {
+                        $("#nav-profile-tab").trigger("click");
+                        info.innerHTML = "石景山区概览";
+                        img.innerHTML = "";
+                        img.src = "imgs/shijingshan.jpg";
+                    }
+                    else if (props.adcode == 110108) {
+                        $("#nav-profile-tab").trigger("click");
+                        info.innerHTML = "海淀区概览";
+                        img.innerHTML = "";
+                        img.src = "imgs/haidian.jpg";
+
+
+                    }
+                    else if (props.adcode == 110109) {
+                        $("#nav-profile-tab").trigger("click");
+                        info.innerHTML = "门头沟区概览";
+                        img.innerHTML = "";
+                        img.src = "imgs/mentougou.jpg";
+
+
+                    }
+                    else if (props.adcode == 110111) {
+                        $("#nav-profile-tab").trigger("click");
+                        info.innerHTML = "房山区概览";
+                        img.innerHTML = "";
+                        img.src = "imgs/fangshan.jpg";
+
+                    }
+                    else if (props.adcode == 110112) {
+                        $("#nav-profile-tab").trigger("click");
+                        info.innerHTML = "通州区概览";
+                        img.innerHTML = "";
+                        img.src = "imgs/tongzhou.jpg";
+
+                    }
+                    else if (props.adcode == 110113) {
+                        $("#nav-profile-tab").trigger("click");
+                        info.innerHTML = "顺义区概览";
+                        img.innerHTML = "";
+                        img.src = "imgs/shunyi.jpg";
+
+                    }
+                    else if (props.adcode == 110114) {
+                        $("#nav-profile-tab").trigger("click");
+                        info.innerHTML = "昌平区概览";
+                        img.innerHTML = "";
+                        img.src = "imgs/changping.jpg";
+
+                    }
+                    else if (props.adcode == 110115) {
+                        $("#nav-profile-tab").trigger("click");
+                        info.innerHTML = "大兴区概览";
+                        img.innerHTML = "";
+                        img.src = "imgs/daxing.jpg";
+
+
+                    }
+                    else if (props.adcode == 110116) {
+                        $("#nav-profile-tab").trigger("click");
+                        info.innerHTML = "怀柔区概览";
+                        img.innerHTML = "";
+                        img.src = "imgs/huairou.jpg";
+
+
+                    }
+                    else if (props.adcode == 110117) {
+                        $("#nav-profile-tab").trigger("click");
+                        info.innerHTML = "平谷区概览";
+                        img.innerHTML = "";
+                        img.src = "imgs/pinggu.jpg";
+
+
+                    }
+                    else if (props.adcode == 110119) {
+                        $("#nav-profile-tab").trigger("click");
+                        info.innerHTML = "延庆区概览";
+                        img.innerHTML = "";
+                        img.src = "imgs/yanqing.jpg";
+
+                    }
+                    else {
+                        console.log("Error");
+                    }
+
+                    switch2AreaNode(props.adcode);
+                });
+
+                //外部区域被点击
+                districtExplorer.on('outsideClick', function (e) {
+
+
+                    districtExplorer.locatePosition(e.originalEvent.lnglat, function (error, routeFeatures) {
+                        if (routeFeatures && routeFeatures.length > 1) {
+                            //切换到北京市
+                            switch2AreaNode(110000);
+                        }
+                    }, {
+                        levelLimit: 2
+                    });
+                });
+
+                //绘制区域面板的节点
+                function renderAreaPanelNode(ele, props, color) {
+
+                    var $box = $('<li/>').addClass('lv_' + props.level);
+
+                    var $h2 = $('<h2/>').addClass('lv_' + props.level).attr({
+                        'data-adcode': props.adcode,
+                        'data-level': props.level,
+                        'data-children-num': props.childrenNum || void (0),
+                        'data-center': props.center.join(',')
+                    }).html(props.name).appendTo($box);
+
+                    if (color) {
+                        $h2.css('borderColor', color);
+                    }
+
+                    //如果存在子节点
+                    if (props.childrenNum > 0) {
+
+                        //显示隐藏
+                        $('<div class="showHideBtn"></div>').appendTo($box);
+
+                        //子区域列表
+                        $('<ul/>').addClass('sublist lv_' + props.level).appendTo($box);
+
+                        $('<div class="clear"></div>').appendTo($box);
+
+                        if (props.level !== 'country') {
+                            $box.addClass('hide-sub');
+                        }
+                    }
+
+                    $box.appendTo(ele);
+                }
+
+
+                //填充某个节点的子区域列表
+                function renderAreaPanel(areaNode) {
+
+                    var props = areaNode.getProps();
+
+                    var $subBox = $('#area-tree').find('h2[data-adcode="' + props.adcode + '"]').siblings('ul.sublist');
+
+                    if (!$subBox.length && props.childrenNum) {
+                        //父节点不存在，先创建
+                        renderAreaPanelNode($('#area-tree'), props);
+                        $subBox = $('#area-tree').find('ul.sublist');
+                    }
+                    if ($subBox.attr('data-loaded') === 'rendered') {
+                        return;
+                    }
+
+                    $subBox.attr('data-loaded', 'rendered');
+
+                    var subFeatures = areaNode.getSubFeatures();
+
+                    //填充子区域
+                    for (var i = 0, len = subFeatures.length; i < len; i++) {
+                        renderAreaPanelNode($subBox, areaNode.getPropsOfFeature(subFeatures[i]), colors[i % colors.length]);
+                    }
+                }
+
+                //绘制某个区域的边界
+                function renderAreaPolygons(areaNode) {
+                    //更新地图视野
+                    map.setBounds(areaNode.getBounds(), null, null, true);
+
+                    //清除已有的绘制内容
+                    districtExplorer.clearFeaturePolygons();
+
+                    //绘制子区域
+                    districtExplorer.renderSubFeatures(areaNode, function (feature, i) {
+
+                        var fillColor = colors[i % colors.length];
+                        var strokeColor = colors[colors.length - 1 - i % colors.length];
+
+                        return {
+                            cursor: 'default',
+                            bubble: true,
+                            strokeColor: strokeColor, //线颜色
+                            strokeOpacity: 1, //线透明度
+                            strokeWeight: 1, //线宽
+                            fillColor: fillColor, //填充色
+                            fillOpacity: 0.35, //填充透明度
+                        };
+                    });
+
+                    //绘制父区域
+                    districtExplorer.renderParentFeature(areaNode, {
+                        cursor: 'default',
+                        bubble: true,
+                        strokeColor: 'black', //线颜色
+                        strokeOpacity: 1, //线透明度
+                        strokeWeight: 2, //线宽
+                        fillColor: areaNode.getSubFeatures().length ? null : colors[0], //填充色
+                        fillOpacity: 0.35, //填充透明度
+                    });
+                }
+
+                //切换区域后刷新显示内容
+                function refreshAreaNode(areaNode) {
+
+                    districtExplorer.setHoverFeature(null);
+
+                    renderAreaPolygons(areaNode);
+
+                    //更新选中节点的class
+                    var $nodeEles = $('#area-tree').find('h2');
+
+                    $nodeEles.removeClass('selected');
+
+                    var $selectedNode = $nodeEles.filter('h2[data-adcode=' + areaNode.getAdcode() + ']').addClass('selected');
+
+                    //展开下层节点
+                    $selectedNode.closest('li').removeClass('hide-sub');
+
+                    //折叠下层的子节点
+                    $selectedNode.siblings('ul.sublist').children().addClass('hide-sub');
+                }
+
+                //切换区域
+                function switch2AreaNode(adcode, callback) {
+                    if (currentAreaNode && ('' + currentAreaNode.getAdcode() === '' + adcode)) {
+                        return;
+                    }
+
+                    loadAreaNode(adcode, function (error, areaNode) {
+
+                        if (error) {
+
+                            if (callback) {
+                                callback(error);
+                            }
+
+                            return;
+                        }
+
+                        currentAreaNode = window.currentAreaNode = areaNode;
+
+                        //设置当前使用的定位用节点
+                        districtExplorer.setAreaNodesForLocating([currentAreaNode]);
+                        refreshAreaNode(areaNode);
+
+                        if (callback) {
+                            callback(null, areaNode);
+                        }
+
+                    });
+                }
+
+                //加载区域
+                function loadAreaNode(adcode, callback) {
+
+                    districtExplorer.loadAreaNode(adcode, function (error, areaNode) {
+
+                        if (error) {
+
+                            if (callback) {
+                                callback(error);
+                            }
+
+                            console.error(error);
+
+                            return;
+                        }
+
+                        renderAreaPanel(areaNode);
+
+                        if (callback) {
+                            callback(null, areaNode);
+                        }
+                    });
+                }
+
+                $('#area-tree').on('mouseenter mouseleave', 'h2[data-adcode]', function (e) {
+
+                    if (e.type === 'mouseleave') {
+                        districtExplorer.setHoverFeature(null);
+                        return;
+                    }
+
+                    var adcode = $(this).attr('data-adcode');
+
+                    districtExplorer.setHoverFeature(currentAreaNode.getSubFeatureByAdcode(adcode));
+                });
+
+
+                $('#area-tree').on('click', 'h2', function () {
+                    var adcode = $(this).attr('data-adcode');
+                    // let info = document.getElementById("ads");
+                    // if (info.style.display == 'block') {
+                    //     info.style.display = "none";
+                    // }
+                    // let bioinfo = document.getElementById("bio-info");
+                    let info = document.getElementById('intro');
+                    let img = document.getElementById("header-img");
+                    let mynavtab = document.getElementById("nav-profile-tab");
+                    if (adcode == 110118) {
+                        $("#nav-profile-tab").trigger("click");
+                        info.innerHTML = "密云区概览";
+                        img.innerHTML = "";
+                        img.src = "./imgs/miyun.jpeg";
+                        // img.innerHTML = "<img src=\"./imgs/miyun.jpeg\" class=\"card-img-top\" style=\"height:20vh;\" alt=\"...\">"
+                        // info.style.display = "none";
+                        // info.innerHTML = "<p></p> <h2 >密云区概览</h2><br>  <table class=\"table table-borderless table-hover\" style=\" font-size:16px;\"><tbody><tr><td>哺乳类动物</td><td>39种</td></tr><tr><td>国家一级保护动物</td><td>1种</td></tr><tr><td>国家二级保护动物</td><td>6种</td></tr><tr><td>北京一级保护动物</td><td>6种</td></tr><tr><td>鸟类</td><td>385种</td></tr><tr><td>一级保护鸟类</td><td>8种</td></tr><tr><td>二级保护鸟类</td><td>51种</td></tr><tr><td>两栖类</td><td>22种</td></tr><tr><td>野生维管束植物</td><td>1200种</td></tr><tr><td>名木古树</td><td>1202株</td></tr></tbody></table>"
+                        // info.style.display = "block";
+
+                    }
+                    else if (adcode == 110101) {
+                        // $('#nav-tab a[href="nav-profile"]').tab('show');
+                        $("#nav-profile-tab").trigger("click");
+                        info.innerHTML = "东城区概览";
+                        img.innerHTML = "";
+                        img.src = "imgs/dongcheng.jpg";
+                        // img.innerHTML = "<img src=\"./imgs/dongcheng.jpg\" class=\"card-img-top\" style=\"height:20vh;\" alt=\"...\">"
+                        // info.style.display = "none";
+                        // info.innerHTML = "<p></p> <h2 >东城区概览</h2><br>  <table class=\"table table-borderless table-hover\" style=\" font-size:16px;\"><tbody><tr><td>哺乳类动物</td><td>39种</td></tr><tr><td>国家一级保护动物</td><td>1种</td></tr><tr><td>国家二级保护动物</td><td>6种</td></tr><tr><td>北京一级保护动物</td><td>6种</td></tr><tr><td>鸟类</td><td>385种</td></tr><tr><td>一级保护鸟类</td><td>8种</td></tr><tr><td>二级保护鸟类</td><td>51种</td></tr><tr><td>两栖类</td><td>22种</td></tr><tr><td>野生维管束植物</td><td>1200种</td></tr><tr><td>名木古树</td><td>1202株</td></tr></tbody></table>"
+                        // info.style.display = "block";
+                    }
+                    else if (adcode == 110102) {
+                        $("#nav-profile-tab").trigger("click");
+                        info.innerHTML = "西城区概览";
+                        img.innerHTML = "";
+                        img.src = "imgs/xicheng.jpg";
+                        // info.style.display = "none";
+                        // info.innerHTML = "<p></p> <h2 >西城区概览</h2><br>  <table class=\"table table-borderless table-hover\" style=\" font-size:16px;\"><tbody><tr><td>哺乳类动物</td><td>39种</td></tr><tr><td>国家一级保护动物</td><td>1种</td></tr><tr><td>国家二级保护动物</td><td>6种</td></tr><tr><td>北京一级保护动物</td><td>6种</td></tr><tr><td>鸟类</td><td>385种</td></tr><tr><td>一级保护鸟类</td><td>8种</td></tr><tr><td>二级保护鸟类</td><td>51种</td></tr><tr><td>两栖类</td><td>22种</td></tr><tr><td>野生维管束植物</td><td>1200种</td></tr><tr><td>名木古树</td><td>1202株</td></tr></tbody></table>"
+                        // info.style.display = "block";
+                    }
+                    else if (adcode == 110105) {
+                        $("#nav-profile-tab").trigger("click");
+                        info.innerHTML = "朝阳区概览";
+                        img.innerHTML = "";
+                        img.src = "imgs/chaoyang.png";
+                        // info.style.display = "none";
+                        // info.innerHTML = "<p></p> <h2 >朝阳区概览</h2><br>  <table class=\"table table-borderless table-hover\" style=\" font-size:16px;\"><tbody><tr><td>哺乳类动物</td><td>39种</td></tr><tr><td>国家一级保护动物</td><td>1种</td></tr><tr><td>国家二级保护动物</td><td>6种</td></tr><tr><td>北京一级保护动物</td><td>6种</td></tr><tr><td>鸟类</td><td>385种</td></tr><tr><td>一级保护鸟类</td><td>8种</td></tr><tr><td>二级保护鸟类</td><td>51种</td></tr><tr><td>两栖类</td><td>22种</td></tr><tr><td>野生维管束植物</td><td>1200种</td></tr><tr><td>名木古树</td><td>1202株</td></tr></tbody></table>"
+                        // info.style.display = "block";
+                    }
+                    else if (adcode == 110106) {
+                        $("#nav-profile-tab").trigger("click");
+                        info.innerHTML = "丰台区概览";
+                        img.innerHTML = "";
+                        img.src = "imgs/fengtai.jpg";
+                        // info.style.display = "none";
+                        // info.innerHTML = "<p></p> <h2 >丰台区概览</h2><br>  <table class=\"table table-borderless table-hover\" style=\" font-size:16px;\"><tbody><tr><td>哺乳类动物</td><td>39种</td></tr><tr><td>国家一级保护动物</td><td>1种</td></tr><tr><td>国家二级保护动物</td><td>6种</td></tr><tr><td>北京一级保护动物</td><td>6种</td></tr><tr><td>鸟类</td><td>385种</td></tr><tr><td>一级保护鸟类</td><td>8种</td></tr><tr><td>二级保护鸟类</td><td>51种</td></tr><tr><td>两栖类</td><td>22种</td></tr><tr><td>野生维管束植物</td><td>1200种</td></tr><tr><td>名木古树</td><td>1202株</td></tr></tbody></table>"
+                        // info.style.display = "block";
+
+                    }
+                    else if (adcode == 110107) {
+                        $("#nav-profile-tab").trigger("click");
+                        info.innerHTML = "石景山区概览";
+                        img.innerHTML = "";
+                        img.src = "imgs/shijingshan.jpg";
+                        // info.style.display = "none";
+                        // info.innerHTML = "<p></p> <h2 >石景山区概览</h2><br>  <table class=\"table table-borderless table-hover\" style=\" font-size:16px;\"><tbody><tr><td>哺乳类动物</td><td>39种</td></tr><tr><td>国家一级保护动物</td><td>1种</td></tr><tr><td>国家二级保护动物</td><td>6种</td></tr><tr><td>北京一级保护动物</td><td>6种</td></tr><tr><td>鸟类</td><td>385种</td></tr><tr><td>一级保护鸟类</td><td>8种</td></tr><tr><td>二级保护鸟类</td><td>51种</td></tr><tr><td>两栖类</td><td>22种</td></tr><tr><td>野生维管束植物</td><td>1200种</td></tr><tr><td>名木古树</td><td>1202株</td></tr></tbody></table>"
+                        // info.style.display = "block";
+                    }
+                    else if (adcode == 110108) {
+                        $("#nav-profile-tab").trigger("click");
+                        info.innerHTML = "海淀区概览";
+                        img.innerHTML = "";
+                        img.src = "imgs/haidian.jpg";
+                        // info.style.display = "none";
+                        // info.innerHTML = "<p></p> <h2 >海淀区概览</h2><br>  <table class=\"table table-borderless table-hover\" style=\" font-size:16px;\"><tbody><tr><td>哺乳类动物</td><td>39种</td></tr><tr><td>国家一级保护动物</td><td>1种</td></tr><tr><td>国家二级保护动物</td><td>6种</td></tr><tr><td>北京一级保护动物</td><td>6种</td></tr><tr><td>鸟类</td><td>385种</td></tr><tr><td>一级保护鸟类</td><td>8种</td></tr><tr><td>二级保护鸟类</td><td>51种</td></tr><tr><td>两栖类</td><td>22种</td></tr><tr><td>野生维管束植物</td><td>1200种</td></tr><tr><td>名木古树</td><td>1202株</td></tr></tbody></table>"
+                        // info.style.display = "block";
+
+                    }
+                    else if (adcode == 110109) {
+                        $("#nav-profile-tab").trigger("click");
+                        info.innerHTML = "门头沟区概览";
+                        img.innerHTML = "";
+                        img.src = "imgs/mentougou.jpg";
+                        // info.style.display = "none";
+                        // info.innerHTML = "<p></p> <h2 >门头沟区概览</h2><br>  <table class=\"table table-borderless table-hover\" style=\" font-size:16px;\"><tbody><tr><td>哺乳类动物</td><td>39种</td></tr><tr><td>国家一级保护动物</td><td>1种</td></tr><tr><td>国家二级保护动物</td><td>6种</td></tr><tr><td>北京一级保护动物</td><td>6种</td></tr><tr><td>鸟类</td><td>385种</td></tr><tr><td>一级保护鸟类</td><td>8种</td></tr><tr><td>二级保护鸟类</td><td>51种</td></tr><tr><td>两栖类</td><td>22种</td></tr><tr><td>野生维管束植物</td><td>1200种</td></tr><tr><td>名木古树</td><td>1202株</td></tr></tbody></table>"
+                        // info.style.display = "block";
+
+                    }
+                    else if (adcode == 110111) {
+                        $("#nav-profile-tab").trigger("click");
+                        info.innerHTML = "房山区概览";
+                        img.innerHTML = "";
+                        img.src = "imgs/fangshan.jpg";
+                        // info.style.display = "none";
+                        // info.innerHTML = "<p></p> <h2 >房山区概览</h2><br>  <table class=\"table table-borderless table-hover\" style=\" font-size:16px;\"><tbody><tr><td>哺乳类动物</td><td>39种</td></tr><tr><td>国家一级保护动物</td><td>1种</td></tr><tr><td>国家二级保护动物</td><td>6种</td></tr><tr><td>北京一级保护动物</td><td>6种</td></tr><tr><td>鸟类</td><td>385种</td></tr><tr><td>一级保护鸟类</td><td>8种</td></tr><tr><td>二级保护鸟类</td><td>51种</td></tr><tr><td>两栖类</td><td>22种</td></tr><tr><td>野生维管束植物</td><td>1200种</td></tr><tr><td>名木古树</td><td>1202株</td></tr></tbody></table>"
+                        // info.style.display = "block";
+                    }
+                    else if (adcode == 110112) {
+                        $("#nav-profile-tab").trigger("click");
+                        info.innerHTML = "通州区概览";
+                        img.innerHTML = "";
+                        img.src = "imgs/tongzhou.jpg";
+                        // info.style.display = "none";
+                        // info.innerHTML = "<p></p> <h2 >通州区概览</h2><br>  <table class=\"table table-borderless table-hover\" style=\" font-size:16px;\"><tbody><tr><td>哺乳类动物</td><td>39种</td></tr><tr><td>国家一级保护动物</td><td>1种</td></tr><tr><td>国家二级保护动物</td><td>6种</td></tr><tr><td>北京一级保护动物</td><td>6种</td></tr><tr><td>鸟类</td><td>385种</td></tr><tr><td>一级保护鸟类</td><td>8种</td></tr><tr><td>二级保护鸟类</td><td>51种</td></tr><tr><td>两栖类</td><td>22种</td></tr><tr><td>野生维管束植物</td><td>1200种</td></tr><tr><td>名木古树</td><td>1202株</td></tr></tbody></table>"
+                        // info.style.display = "block";
+                    }
+                    else if (adcode == 110113) {
+                        $("#nav-profile-tab").trigger("click");
+                        info.innerHTML = "顺义区概览";
+                        img.innerHTML = "";
+                        img.src = "imgs/shunyi.jpg";
+                        // info.style.display = "none";
+                        // info.innerHTML = "<p></p> <h2 >顺义区概览</h2><br>  <table class=\"table table-borderless table-hover\" style=\" font-size:16px;\"><tbody><tr><td>哺乳类动物</td><td>39种</td></tr><tr><td>国家一级保护动物</td><td>1种</td></tr><tr><td>国家二级保护动物</td><td>6种</td></tr><tr><td>北京一级保护动物</td><td>6种</td></tr><tr><td>鸟类</td><td>385种</td></tr><tr><td>一级保护鸟类</td><td>8种</td></tr><tr><td>二级保护鸟类</td><td>51种</td></tr><tr><td>两栖类</td><td>22种</td></tr><tr><td>野生维管束植物</td><td>1200种</td></tr><tr><td>名木古树</td><td>1202株</td></tr></tbody></table>"
+                        // info.style.display = "block";
+                    }
+                    else if (adcode == 110114) {
+                        $("#nav-profile-tab").trigger("click");
+                        info.innerHTML = "昌平区概览";
+                        img.innerHTML = "";
+                        img.src = "imgs/changping.jpg";
+                        // info.style.display = "none";
+                        // info.innerHTML = "<p></p> <h2 >昌平区概览</h2><br>  <table class=\"table table-borderless table-hover\" style=\" font-size:16px;\"><tbody><tr><td>哺乳类动物</td><td>39种</td></tr><tr><td>国家一级保护动物</td><td>1种</td></tr><tr><td>国家二级保护动物</td><td>6种</td></tr><tr><td>北京一级保护动物</td><td>6种</td></tr><tr><td>鸟类</td><td>385种</td></tr><tr><td>一级保护鸟类</td><td>8种</td></tr><tr><td>二级保护鸟类</td><td>51种</td></tr><tr><td>两栖类</td><td>22种</td></tr><tr><td>野生维管束植物</td><td>1200种</td></tr><tr><td>名木古树</td><td>1202株</td></tr></tbody></table>"
+                        // info.style.display = "block";
+                    }
+                    else if (adcode == 110115) {
+                        $("#nav-profile-tab").trigger("click");
+                        info.innerHTML = "大兴区概览";
+                        img.innerHTML = "";
+                        img.src = "imgs/daxing.jpg";
+                        // info.style.display = "none";
+                        // info.innerHTML = "<p></p> <h2 >大兴区概览</h2><br>  <table class=\"table table-borderless table-hover\" style=\" font-size:16px;\"><tbody><tr><td>哺乳类动物</td><td>39种</td></tr><tr><td>国家一级保护动物</td><td>1种</td></tr><tr><td>国家二级保护动物</td><td>6种</td></tr><tr><td>北京一级保护动物</td><td>6种</td></tr><tr><td>鸟类</td><td>385种</td></tr><tr><td>一级保护鸟类</td><td>8种</td></tr><tr><td>二级保护鸟类</td><td>51种</td></tr><tr><td>两栖类</td><td>22种</td></tr><tr><td>野生维管束植物</td><td>1200种</td></tr><tr><td>名木古树</td><td>1202株</td></tr></tbody></table>"
+                        // info.style.display = "block";
+
+                    }
+                    else if (adcode == 110116) {
+                        $("#nav-profile-tab").trigger("click");
+                        info.innerHTML = "怀柔区概览";
+                        img.innerHTML = "";
+                        img.src = "imgs/huairou.jpg";
+                        // info.style.display = "none";
+                        // info.innerHTML = "<p></p> <h2 >怀柔区概览</h2><br>  <table class=\"table table-borderless table-hover\" style=\" font-size:16px;\"><tbody><tr><td>哺乳类动物</td><td>39种</td></tr><tr><td>国家一级保护动物</td><td>1种</td></tr><tr><td>国家二级保护动物</td><td>6种</td></tr><tr><td>北京一级保护动物</td><td>6种</td></tr><tr><td>鸟类</td><td>385种</td></tr><tr><td>一级保护鸟类</td><td>8种</td></tr><tr><td>二级保护鸟类</td><td>51种</td></tr><tr><td>两栖类</td><td>22种</td></tr><tr><td>野生维管束植物</td><td>1200种</td></tr><tr><td>名木古树</td><td>1202株</td></tr></tbody></table>"
+                        // info.style.display = "block";
+
+                    }
+                    else if (adcode == 110117) {
+                        $("#nav-profile-tab").trigger("click");
+                        info.innerHTML = "平谷区概览";
+                        img.innerHTML = "";
+                        img.src = "imgs/pinggu.jpg";
+                        // info.style.display = "none";
+                        // info.innerHTML = "<p></p> <h2 >平谷区概览</h2><br>  <table class=\"table table-borderless table-hover\" style=\" font-size:16px;\"><tbody><tr><td>哺乳类动物</td><td>39种</td></tr><tr><td>国家一级保护动物</td><td>1种</td></tr><tr><td>国家二级保护动物</td><td>6种</td></tr><tr><td>北京一级保护动物</td><td>6种</td></tr><tr><td>鸟类</td><td>385种</td></tr><tr><td>一级保护鸟类</td><td>8种</td></tr><tr><td>二级保护鸟类</td><td>51种</td></tr><tr><td>两栖类</td><td>22种</td></tr><tr><td>野生维管束植物</td><td>1200种</td></tr><tr><td>名木古树</td><td>1202株</td></tr></tbody></table>"
+                        // info.style.display = "block";
+
+                    }
+                    else if (adcode == 110119) {
+                        $("#nav-profile-tab").trigger("click");
+                        info.innerHTML = "延庆区概览";
+                        img.innerHTML = "";
+                        img.src = "imgs/yanqing.jpg";
+                        // info.style.display = "none";
+                        // info.innerHTML = "<p></p> <h2 >延庆区概览</h2><br>  <table class=\"table table-borderless table-hover\" style=\" font-size:16px;\"><tbody><tr><td>哺乳类动物</td><td>39种</td></tr><tr><td>国家一级保护动物</td><td>1种</td></tr><tr><td>国家二级保护动物</td><td>6种</td></tr><tr><td>北京一级保护动物</td><td>6种</td></tr><tr><td>鸟类</td><td>385种</td></tr><tr><td>一级保护鸟类</td><td>8种</td></tr><tr><td>二级保护鸟类</td><td>51种</td></tr><tr><td>两栖类</td><td>22种</td></tr><tr><td>野生维管束植物</td><td>1200种</td></tr><tr><td>名木古树</td><td>1202株</td></tr></tbody></table>"
+                        // info.style.display = "block";
+                    }
+                    else {
+                        // info.style.display = "none";
+                        console.log("Error");
+                    }
+
+                    switch2AreaNode(adcode);
+                });
+
+
+                $('#area-tree').on('click', '.showHideBtn', function () {
+
+                    var $li = $(this).closest('li');
+
+                    $li.toggleClass('hide-sub');
+
+                    if (!$li.hasClass('hide-sub')) {
+
+                        //子节点列表被展开
+                        var $subList = $li.children('ul.sublist');
+
+                        //尚未加载
+                        if (!$subList.attr('data-loaded')) {
+
+                            $subList.attr('data-loaded', 'loading');
+
+                            $li.addClass('loading');
+
+                            //加载
+                            loadAreaNode($li.children('h2').attr('data-adcode'), function () {
+
+                                $li.removeClass('loading');
+                            });
+                        }
+                    }
+                });
+
+                //切换到北京 110000
+                //切换到密云 110118
+                switch2AreaNode(110000);
+            });
+
+
+            //marker
+
+            AMapUI.defineTpl("ui/overlay/SimpleInfoWindow/tpl/container.html", [], function () {
+                return document.getElementById('my-infowin-tpl').innerHTML;
+            });
+
+
+
+            AMapUI.loadUI(['overlay/SimpleInfoWindow'], function (SimpleInfoWindow) {
+
+                var marker = new AMap.Marker({
+                    map: map,
+                    zIndex: 9999999,
+                    position: [117.170972, 40.384915],
+                    icon: './imgs/pingreen.png'
+                    // position: map.getCenter()
+                });
+
+                var infoWindow = new SimpleInfoWindow({
+                    title: '红外相机数据',
+                    sn_name: '红外相机编号:',
+                    sn: '004',
+                    status_name: '相机健康状况:',
+                    status: '良好',
+                    location_name: '地理位置:',
+                    location: '[117.170972,40.384915](密云区)',
+                    img_number: '影像数据:',
+                    count: '<a href="media.html"><button class="btn btn-primary">35条</button></a>',
+                    date_name: ' ',
+                    date: ' ',
+                    //基点指向marker的头部位置
+                    offset: new AMap.Pixel(0, -31)
+                });
+
+                function openInfoWin() {
+                    infoWindow.open(map, marker.getPosition());
+                }
+
+                //marker 点击时打开
+                marker.on('click', function () {
+                    openInfoWin();
+                });
+            });
+
+
+
+            AMapUI.loadUI(['overlay/SimpleInfoWindow'], function (SimpleInfoWindow) {
+
+                var marker = new AMap.Marker({
+                    map: map,
+                    zIndex: 9999999,
+                    position: [116.846332, 40.379822],
+                    icon: './imgs/tree-1.png'
+                });
+
+                var infoWindow = new SimpleInfoWindow({
+                    title: '密云名木古树',
+                    sn_name: '古树编号:',
+                    sn: '11012800002',
+                    status_name: '古树名称:',
+                    status: '桧柏 (柏科-圆柏属)',
+                    location_name: '地理位置:',
+                    location: '密云镇-二中西侧',
+                    img_number: '古树保护等级:',
+                    count: '1级',
+                    date_name: '古树基本情况:',
+                    date: '树高：15.0米，胸/地围:254.0厘米',
+
+                    //基点指向marker的头部位置
+                    offset: new AMap.Pixel(0, -31)
+                });
+
+                function openInfoWin() {
+                    infoWindow.open(map, marker.getPosition());
+                }
+
+                //marker 点击时打开
+                marker.on('click', function () {
+                    openInfoWin();
+                });
+
+            });
+
+        </script>
+
+        <script type="text/javascript" src="http://webapi.amap.com/demos/js/liteToolbar.js?v=1.0.11"></script>
+        <script src="./vendor/bootstrap/js/bootstrap.min.js"></script>
+    </div>
+</div>
+</body>
+
+<script src="../static/vendors/popper.js/dist/umd/popper.min.js"></script>
+<script src="../static/assets/js/main.js"></script>
+
+</html>

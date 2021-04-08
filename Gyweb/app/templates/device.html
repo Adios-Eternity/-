@@ -1,0 +1,445 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>节点设置</title>
+    <meta name="description" content="Sufee Admin - HTML5 Admin Template">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="apple-icon.png">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" href="../static/vendors/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../static/vendors/themify-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="../static/vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="../static/vendors/selectFX/css/cs-skin-elastic.css">
+    <link rel="stylesheet" href="../static/vendors/jqvmap/dist/jqvmap.min.css">
+    <link rel="stylesheet" href="../static/assets/css/style.css">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+    <script src="../static/js/jquery-3.5.1.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script src="../static/js/bootstrap.bundle.min.js"></script>
+
+</head>
+
+<body>
+
+
+<!-- Left Panel -->
+
+<aside id="left-panel" class="left-panel">
+    <nav class="navbar navbar-expand-sm navbar-default">
+
+        <div class="navbar-header">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fa fa-bars"></i>
+            </button>
+            <a class="navbar-brand" href="#" style="font-size: 15px">
+                <img src="../static/images/北京林业大学.jpeg" alt="Logo" style="width: 50px;height: 50px;margin-right: 20px;border-radius: 28px">
+            </a>
+            <a><h5 style="color: whitesmoke;font-size: 17px;">基于LoRa果园无线监控系统</h5></a>
+            <i class="fa fa-bars"></i>
+        </div>
+
+        <div id="main-menu" class="main-menu collapse navbar-collapse">
+            <ul class="nav navbar-nav" style="margin-top: 20px">
+                <li class="active">
+                    <a href="{{ url_for('web.home') }}"> <i class="menu-icon fa fa-dashboard"></i>首页 </a>
+                </li>
+
+                <h3 class="menu-title">设备管理</h3><!-- /.menu-title -->
+                <li>
+                    <a href="{{ url_for('web.device_m') }}"> <i class="menu-icon ti-email"></i>节点设置 </a>
+                    <a href="{{ url_for('web.gateway_m') }}"> <i class="menu-icon ti-email"></i>网关设置 </a>
+                </li>
+
+                <h3 class="menu-title">数据控制</h3><!-- /.menu-title -->
+                <li>
+                    <a href="{{ url_for('web.control_panel') }}"> <i class="menu-icon fa fa-tasks"></i>控制面板</a>
+                </li>
+
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </nav>
+</aside><!-- /#left-panel -->
+
+<!-- Left Panel -->
+
+<!-- Right Panel -->
+
+<div id="right-panel" class="right-panel">
+
+    <!-- Header-->
+    <header id="header" class="header">
+
+        <div class="header-menu" >
+
+            <div class="col-sm-4">
+                <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
+                <div class="user-area dropdown float-right">
+                    <a  href="#" style="float: right;margin: 5px;"></a>
+                </div>
+            </div>
+
+            <div class="col-sm-8">
+                <div class="user-area dropdown float-right">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img class="user-avatar rounded-circle" src="../static/images/avatar-1.png" alt="User Avatar">
+                    </a>
+                </div>
+
+                <div id="admin">
+                    <a href="{{ url_for('web.loginout') }}" style="float:right;margin: 6px;">注销</a>
+                    <a  href="#" style="float: right;margin: 5px;">欢迎登录：{{ content }}</a>
+                </div>
+                <div class="header-left" style="float: right;margin-right: 10px">
+                    <button class="search-trigger"><i class="fa fa-search"></i></button>
+                    <div class="form-inline">
+                        <form class="search-form">
+                            <input class="form-control mr-sm-2" type="text" placeholder="Search ..." aria-label="Search">
+                            <button class="search-close" type="submit"><i class="fa fa-close"></i></button>
+                        </form>
+                    </div>
+
+                    <div class="dropdown for-notification">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-bell"></i>
+                            <span class="count bg-danger">6</span>
+                        </button>
+
+                    </div>
+
+                    <div class="dropdown for-message">
+                        <button class="btn btn-secondary dropdown-toggle" type="button"
+                                id="message"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="ti-email"></i>
+                            <span class="count bg-primary">9</span>
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </header><!-- /header -->
+    <!-- Header-->
+
+    <div class="content mt-3">
+        <!--/.col-->
+
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div id="up1">
+                            <ul id="content"></ul>
+                            <div class="form" style="width: 800px">
+                                <input type="text" placeholder="请输入发送的消息" id="inmessage" name="inmessage" style="width: 500px;"/>
+                                <input type="submit" value="发送" id="send" onclick="dosend()"/>
+                            </div>
+                            <br/>
+                            <h5 style="font-size: 5px;width: 550px">(  Byte0~Byte4：用于广播下发时终端确认,Byte5~Byte7: 数据帧，000:启; 001:停; 010:进; 011:退; 100:施药阀门开; 101:施药阀门关,Byte8~Byte9: 用于校验获取数据是否为目标帧格式。 )</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+        </div>
+
+        <div id="talbe-area">
+            <table class="table table-hover" style="margin-top: 10px">
+                <thead>
+                <th scope="col">终端节点类型</th>
+                <th scope="col">设备名称</th>
+                <th scope="col">入网方式</th>
+                <th scope="col">设备类型</th>
+                <th scope="col">状态</th>
+                <th scope="col">位置</th>
+                <th scope="col">添加时间</th>
+                <th scope="col">操作</th>
+                </thead>
+                <tbody>
+                {% for device in devices %}
+                <tr>
+                    <td>{{ device.DevEUI }}</td>
+                    <td>{{ device.label }}</td>
+                    <td>{{ device.net_type }}</td>
+                    <td>{{ device.class_ }}</td>
+                    {% if device.status==1 %}
+                        <td>有效</td>
+                    {% else %}
+                        <td>无效</td>
+                    {% endif %}
+                    <td>[{{ device.longitude }},{{ device.latitude }}]</td>
+                    <td>{{ device.add_time }}</td>
+                    <td>
+                        <!--                修改按钮-->
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modifyModal"
+                                onclick="modifyHandle(
+                        '{{ device.Did }}',
+                        '{{ device.DevEUI }}',
+                         '{{ device.label }}',
+                          '{{ device.net_type }}',
+                           '{{ device.class_ }}',
+                            '{{ device.status }}',
+                            '{{ device.longitude }}',
+                             '{{ device.latitude }}',
+                             '{{ device.add_time }}',
+                             '{{ device.Devcontent }}'
+                        )">修改</button>
+                        <!--                删除按钮-->
+                        <button class="btn btn-primary" data-bs-toggle="modal">
+                            <a href="{{ url_for('web.device_delete', Did=device.Did) }}" style="color: white; text-decoration: none">删除</a>
+                        </button>
+                        <!--                操纵按钮-->
+                        <button class="btn btn-primary" data-bs-toggle="modal">
+                            <a href="{{ url_for('web.net_debugger') }}" style="color: white; text-decoration: none">下发</a>
+                        </button>
+                    </td>
+                </tr>
+                {% endfor %}
+                <!-- Modal -->
+                <div class="modal fade" id="modifyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            </div>
+
+                            <div class="modal-body">
+                                <form action="{{ url_for('web.device_modify') }}" method="post">
+                                    <div class="mb-3" hidden>
+                                        <label for="Did" class="form-label">id</label>
+                                        <input type="text" class="form-control" id="Did" name="Did">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="DevEUI" class="form-label">终端节点类型</label>
+                                        <select class="form-control form-control-lg" id="DevEUI" name="DevEUI" onChange="nextChange()">
+                                            <option selected>请选择</option>
+                                            <option>动态设备</option>
+                                            <option>静态设备</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="label" class="form-label">设备名称</label>
+                                        <input type="text" class="form-control" id="label" name="label">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="net_type" class="form-label">入网类型</label>
+                                        <input type="text" class="form-control" id="net_type" name="net_type">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="class_" class="form-label">设备类型</label>
+                                        <select class="form-control form-control-lg" id="class_" name="class_">
+                                            <option></option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="status" class="form-label">状态</label>
+                                        <select class="form-control form-control-lg" id="status" name="status">
+                                            <option>有效</option>
+                                            <option>无效</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="longitude" class="form-label">经度</label>
+                                        <input type="text" placeholder="精确到小数点后六位" class="form-control" id="longitude" name="longitude">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="latitude" class="form-label">纬度</label>
+                                        <input type="text" placeholder="精确到小数点后六位" class="form-control" id="latitude" name="latitude">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="add_time" class="form-label">添加时间</label>
+                                        <input type="datetime-local" class="form-control" id="add_time" name="add_time">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="Devcontent" class="form-label">简述</label>
+                                        <input type="text" class="form-control" id="Devcontent" name="Devcontent">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">保存修改</button>
+                                </form>
+                            </div>
+                            {#                    <div class="modal-footer">#}
+                            {#                        <button type="submit" class="btn btn-primary">保存修改</button>#}
+                            {#                    </div>#}
+                        </div>
+                    </div>
+                </div>
+                </tbody>
+            </table>
+        </div>
+
+        <div>
+            <div class="row">
+                <div class="col-9">
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">添加设备</button>
+                    <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                </div>
+                                <div class="modal-body">
+                                    <form action="{{ url_for('web.device_add') }}" method="post">
+                                        <div class="mb-3">
+                                            <label for="DevEUI1" class="form-label">设备类型</label>
+                                            <select class="form-control form-control-lg" id="DevEUI1" name="DevEUI" onchange="nextChange2()">
+                                                <option selected>请选择</option>
+                                                <option>动态设备</option>
+                                                <option>静态设备</option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="label" class="form-label">设备标签</label>
+                                            <input type="text" class="form-control" name="label">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="net_type" class="form-label">入网类型</label>
+                                            <input type="text" class="form-control" name="net_type">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="class1" class="form-label">Class</label>
+                                            <select class="form-control form-control-lg" id="class1"  name="class_">
+                                                <option></option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="status" class="form-label">状态</label>
+                                            <select class="form-control form-control-lg" name="status">
+                                                <option>有效</option>
+                                                <option>无效</option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="longitude" class="form-label">经度</label>
+                                            <input type="text" placeholder="精确到小数点后六位" class="form-control" name="longitude">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="latitude" class="form-label">纬度</label>
+                                            <input type="text" placeholder="精确到小数点后六位" class="form-control" name="latitude">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="add_time" class="form-label">添加时间</label>
+                                            <input type="datetime-local" class="form-control" name="add_time">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="Devcontent" class="form-label">简述</label>
+                                            <input type="text" class="form-control" name="Devcontent">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="Uid" class="form-label">用户号</label>
+                                            <input type="text" class="form-control" id="Uid" name="Uid">
+                                        </div>
+
+                                        <button type="submit" class="btn btn-primary">提交</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="{{ url_for('web.device_m') }}">1</a></li>
+                            <li class="page-item"><a class="page-link" href="{{ url_for('web.device_list', Start=6) }}">2</a></li>
+                            <li class="page-item"><a class="page-link" href="{{ url_for('web.device_list',Start=12) }}">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                </div>
+            </div>
+
+
+        </div>
+    </div> <!-- .content -->
+</div><!-- /#right-panel -->
+
+<script>
+    function modifyHandle(Did,DevEUI,label,net_type,class_,status,longitude, latitude, add_time, Devcontent)
+    {
+        document.getElementById("Did").value = Did
+        document.getElementById("label").value = label
+        document.getElementById("net_type").value = net_type
+        document.getElementById("class_").value = class_
+        document.getElementById("status").value = status
+        document.getElementById("add_time").value = add_time
+        document.getElementById("longitude").value =longitude
+        document.getElementById("latitude").value =latitude
+        document.getElementById("add_time").value = add_time
+        document.getElementById("Devcontent").value = Devcontent
+    }
+
+    function nextChange() {
+
+        var first = document.getElementById("DevEUI");
+        var second = document.getElementById("class_");
+
+        second.options.length = 0; // 清除second下拉框的所有内容
+        if(first.selectedIndex == 1)
+        {
+            second.options.add(new Option("单轨车", "单轨车", false, true));
+            second.options.add(new Option("施药机", "施药机"));
+            second.options.add(new Option("灌溉阀", "灌溉阀"));  // 默认选中区
+        }
+        if(first.selectedIndex == 2)
+        {
+            second.options.add(new Option("静态节点", "静态节点", false, true));  // 默认选中区
+        }
+    }
+    function nextChange2() {
+        var first = document.getElementById("DevEUI1");
+        var second = document.getElementById("class1");
+
+        second.options.length = 0; // 清除second下拉框的所有内容
+        if(first.selectedIndex == 1)
+        {
+            second.options.add(new Option("单轨车", "单轨车", false, true));
+            second.options.add(new Option("施药机", "施药机"));
+            second.options.add(new Option("灌溉阀", "灌溉阀"));  // 默认选中区
+        }
+        if(first.selectedIndex == 2)
+        {
+            second.options.add(new Option("静态节点", "静态节点", false, true));  // 默认选中区
+        }
+    }
+
+
+    function dosend() {
+        var message = $.trim($("#inmessage").val());
+        var oUl=document.getElementById('content');
+        var param = "message=" + message;
+        $.post('/net_send', param, function (data){
+            if(data == "send-pass"){
+                oUl.innerHTML += "<li>发送成功</li>";
+            }
+            else {
+                oUl.innerHTML += "<li>发送失败</li>";
+            }
+        })
+    }
+</script>
+
+<script src="../static/vendors/popper.js/dist/umd/popper.min.js"></script>
+<script src="../static/assets/js/main.js"></script>
+
+</body>
+
+</html>
+
+
